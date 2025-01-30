@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using Microsoft.Extensions.Logging;
+using Infraestructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +25,6 @@ var app = builder.Build();
 
 // Obtener el logger para registrar información
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
-logger.LogInformation("Conexión a la base de datos establecida correctamente.");
 
 // Intentar realizar una consulta simple para verificar la conexión
 try
