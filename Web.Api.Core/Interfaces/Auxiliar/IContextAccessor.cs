@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Web.Api.Common.Dtos.Auth;
 
 namespace Web.Api.Core.Interfaces.Auxiliar
 {
     public interface IContextAccessor
     {
-        //UserAuthData GetUserAuthData();
-        //void AppendCookieContext(string name, string value,CookieOptions options);
+        UserAuthDataDto GetUserAuthData();
         HttpContext Context { get; }
     }
 }
