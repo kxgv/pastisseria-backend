@@ -4,7 +4,6 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<RootNamespace>pastisseria_backend</RootNamespace>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -18,8 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Core.csproj" />
-    <ProjectReference Include="..\..\Infraestructure\Infraestructure.csproj" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infraestructure\Web.Api.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>

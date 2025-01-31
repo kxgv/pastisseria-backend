@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Core.Entities;
+using Web.Api.Infraestructure.EntityFramework.Daos;
 
-namespace Infraestructure.Data
+namespace Web.Api.Infraestructure.EntityFramework.Context
 {
     public class ApplicationDbContext : DbContext
     {

@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities
+namespace Web.Api.Infraestructure.EntityFramework.Daos
 {
     public class Users
     {
-        public int Id {get; set;}
-        public string Name { get; set;} = string.Empty;
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required]
         [EmailAddress]
         [MaxLength(255)]
         public string Email { get; set; }
-        public required string Password { get; set;}
+        public required string Password { get; set; }
 
         [Required]
         [MaxLength(50)]
