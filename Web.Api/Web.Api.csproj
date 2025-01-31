@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infraestructure\Web.Api.Infraestructure.csproj" />
+    <ProjectReference Include="..\Web.Api.Infraestructure\Web.Api.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
