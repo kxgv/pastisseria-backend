@@ -1,23 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Web.Api.Common.Dtos.Auth;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Web.Api.Core.Interfaces;
-using Web.Api.Core.Interfaces.Auxiliar;
-using Web.Api.Core.Services;
+using Microsoft.AspNetCore.Http.HttpResults;
+using System.Security.Authentication;
+
+//using Web.Api.Common.Helpers;
+//using Web.Api.Models.Request;
 
 namespace Web.Api.Controllers {
-    public class UsersController : BaseService, IUsersService
+    [Authorize]
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsersController : ControllerBase
     {
         //private readonly IMapper _mapper;
         //private readonly IUnitOfWork _unitOfWork;
         private readonly IUsersService _usersService;
 
         public UsersController(
-            IContextAccessor contextAccessor,
+            //IContextAccessor contextAccessor,
             //IUnitOfWork unitOfWork,
-            IActionResultTypeMapper mapper,
+            //IActionResultTypeMapper mapper,
             IUsersService usersService
-            ) : base(contextAccessor)
+            )
         {
             //_mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             //_unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
@@ -28,16 +35,8 @@ namespace Web.Api.Controllers {
         public async Task<IActionResult> GetUserAuthData(string userName)
         {
             var userInfo = await _usersService.GetUserInfo(userName);
-            if (userInfo == null)
-            {
-                return NotFoundResult();
-            }
-            return Ok(userInfo);
+            return userInfo == null ? NotFound() : Ok(userInfo);
         }
 
-        public Task<UserAuthDataDto> GetUserInfo(string userId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

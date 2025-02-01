@@ -9,6 +9,6 @@ namespace Web.Api.Core.Interfaces
 {
     public interface IUsersService
     {
-        public async Task<UserAuthDataDto> GetUserInfo(string userId);
+        Task<UserAuthDataDto> GetUserInfo(string userId);
     }
 }
