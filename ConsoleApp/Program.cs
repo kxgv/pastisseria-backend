@@ -51,9 +51,15 @@ class Program
             {
                 Console.WriteLine("Write the name of the task");
                 string taskName = Console.ReadLine();
-                tasks.Add(taskName);
-                completed.Add(false);
-                Console.WriteLine($"Task {taskName} added correctly");
+                if (taskName != null)
+                {
+                    tasks.Add(taskName);
+                    completed.Add(false);
+                    Console.WriteLine($"Task {taskName} added correctly");
+                } else
+                {
+                    Console.WriteLine("Error ading task");
+                } 
             }
 
             static void ShowTasks()
@@ -72,7 +78,7 @@ class Program
                 ShowTasks();
 
                 Console.Write("Seleccione una opción: ");
-                string selectedTask = Console.ReadLine();
+          
                 if( int.TryParse(Console.ReadLine(), out int taskNumber) 
                     && taskNumber > 0 
                     && taskNumber <= tasks.Count)
@@ -89,8 +95,19 @@ class Program
             {
                 ShowTasks();
                 Console.Write("Seleccione una opción: ");
-                string selectedTask = Console.ReadLine();
 
+                if (int.TryParse(Console.ReadLine(), out int taskNumber)
+                  && taskNumber > 0
+                  && taskNumber <= tasks.Count)
+                {
+                    tasks.RemoveAt(taskNumber - 1);
+                    Console.WriteLine("Task deleted");
+                    ShowTasks();
+                }
+                else
+                {
+                    Console.WriteLine("Bad task number");
+                }
             }
         }
 
