@@ -12,9 +12,83 @@ namespace ConsoleApp
  
         static void Main(string[] args)
         {
-            ReverseString();
+            Palindrome();
+            //Fibonacci();
+            //ReverseString();
             //Factorial();
             //FizzBuzz();
+        }
+
+        static void Palindrome()
+        {
+            Console.WriteLine("Write a sentence...");
+            var sentence = Console.ReadLine();
+            bool result = IsPalindrome(sentence);
+
+            Console.WriteLine($"Sentence {result}");
+        }
+
+        static bool IsPalindrome(string sentence)
+        {
+            if (string.IsNullOrEmpty(sentence))
+            {
+                Console.WriteLine("empty sentence"); return false;
+            }
+
+            var original = sentence.Replace(" ", "").Trim().ToLower();
+            var reverse = Reverse(sentence); 
+
+            var result = Equals(original, reverse);
+
+            if (result)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        static void Fibonacci()
+        {
+            Console.WriteLine("Write a number...");
+
+            int.TryParse(Console.ReadLine(), out int number); 
+            var result = CalculateFibonacci(number);
+            Console.WriteLine($"Fibonacci: {result}");
+        }
+
+        public static int CalculateFibonacci(int n)
+        {
+
+            /*
+            a = 0, b = 1
+            Paso 1: a = 1, b = 1
+            Paso 2: a = 1, b = 2
+            Paso 3: a = 2, b = 3
+            Paso 4: a = 3, b = 5
+            Paso 5: a = 5, b = 8  ← Resultado final
+             */
+
+            int a = 0;
+            int b = 1;
+            int result = 0;
+
+            if (n == 0)
+            {
+                return 0;
+            }
+            else if (n == 1) {
+                return 1;
+            } else
+            {
+                for (int i = 1; i < n; i++)
+                {
+                    result = a + b;
+                    a = b;
+                    b = result;
+                }   
+                return result;
+            }
         }
 
         static void ReverseString()
@@ -38,7 +112,7 @@ namespace ConsoleApp
 
             var chars = str.ToCharArray();
             Array.Reverse(chars);
-            return new string(chars);
+            return new string(chars).ToLower();
         }
 
         static void Factorial()
